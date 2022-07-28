@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1590007492423.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1565649289",
+    "id" : "3A4E0DEC",
+    "lastKnownWriteTime" : 1589936871,
+    "last_content_update" : 1589936871,
+    "path" : "/media/luke/WORK/Programming/Python/vowels_bootstrap/static/datasets/datasets.R",
+    "project_path" : "datasets.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

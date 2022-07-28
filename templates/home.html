@@ -1,0 +1,527 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="google-site-verification" content="SouBQwD-vjayqmjz-ohaEt6C0UI-hraX1AfZzaCPrjU" />
+
+  <title>VowelMeter, software for estimating vowel quality</title>
+
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/grey_darker2.css' %}" rel="stylesheet">
+  <link href="{% static 'css/vowelmeter.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
+    <div class="container">
+      <span class="navbar-text" style="color: #ffffff; font-size: 1.2em; padding: 0px;">
+        VowelMeter
+      </span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#about_modal">About</a>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Downloads
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% static 'datasets/training_data.csv' %}" target="_blank">Training
+                Data</a>
+              <a class="dropdown-item" href="{% static 'models/backness_1177.model' %}" target="_blank">Vowel Backness
+                Model</a>
+              <a class="dropdown-item" href="{% static 'models/height_0920.model' %}" target="_blank">Vowel Height
+                Model</a>
+            </div>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#contact_modal">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="modal fade" id="about_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>VowelMeter</p>
+          <p>A program for semi-automatic placement of vowels in the IPA Vowel Diagram</p>
+          <p>Ver. 1.0</p>
+          <p>May 2020</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="contact_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Łukasz Stolarski</p>
+          <p>lukasz.stolarski@ujk.edu.pl</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Page Content -->
+
+  <div class="col-xs-12" style="height:2em;"></div>
+
+  <div class="my_container">
+
+    <div class="row">
+      <div class="col text-center d-flex justify-content-center">
+        <div class="card card-block d-flex shadow" style="max-width: 1000px;">
+          <div class="card-body align-items-center">
+            <p>Welcome to VowelMeter, a free program for semi-automatic placement of vowel articulations in the IPA Vowel
+              Diagram. Please note that the software is still in the development stage. Currently, it only supports evaluation of monophthongal
+              vowel articulations in non-tonic languages. It is strongly recommended to analyse a representative sample of different recordings of the same vowel in order to draw meaningful conclusions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col text-center d-flex justify-content-center">
+        <h1>Step 1: Acoustic Measurements</h1>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-8 text-center d-flex justify-content-center align-items-center"
+        id="acoustic_measurements_left_panel">
+        <div class="card card-block d-flex shadow" style="max-width: 600px;" id="acoustic_measurements_info_card">
+          <div class="card-body align-items-center">
+            <h5>Acoustic analysis may be performed in two ways:</h5>
+            <br>
+            <div class="row">
+              <div class="col text-left">
+                <ol>
+                  <li>
+                    Using the functionality provided on this website.
+                    Load an audio file to see the corresponding spectrogram and acoustic measurement results.
+                    Change measurement settings if the data obtained are innacurate.
+                    The values of formants and F0 can also be manually adjusted in the panel below.
+                  </li>
+                  <br>
+                  <li>You can perform the analysis in external speech analysis software
+                    ("Praat" is strongly recommended) and write the values of F3, F2, F1 and F0
+                    in the panel below.
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 text-center d-flex justify-content-center align-items-center">
+        <div class="card shadow">
+          <div class="card-body">
+            <p class="lead" id="vowel_status_text">Status: no file loaded</p>
+            <input type="file" id='vowel_file' name="vowel_file" accept=".wav,.mp3" hidden="hidden">
+            <button type="button" class="btn btn-success" id="vowel_select_button">Load file</button>
+            <br>
+            <br>
+            <p class="lead" style="margin-bottom: 0px;">Measurement settings:</p>
+            <div class="row">
+              <div class="col d-flex justify-content-center">
+                <div class="row">
+                  <div class="col text-left">
+                    <!-- <p style="margin: 0px;">Speaker's gender:</p> -->
+                    <div class="custom-control custom-radio">
+                      <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input"
+                        checked>
+                      <label class="custom-control-label" for="customRadioInline1">female voice presets</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" id="customRadioInline2" name="customRadioInline1"
+                        class="custom-control-input">
+                      <label class="custom-control-label" for="customRadioInline2">male voice presets</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" id="customRadioInline3" name="customRadioInline1"
+                        class="custom-control-input">
+                      <label class="custom-control-label" for="customRadioInline3">custom settings</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-center d-flex justify-content-center">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#advanced_settings_modal"
+                  id="custom_settings_button" disabled>Custom
+                  settings</button>
+
+                <div class="modal fade" id="advanced_settings_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Custom settings</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row align-items-center d-flex justify-content-center">
+                          <div class="col-auto">
+                            <div class="card shadow">
+                              <div class="card-body">
+                                <div class="row align-items-center d-flex justify-content-center">
+                                  <div class="col-auto">
+                                    <h5 style="margin-bottom: 0.8em;">Spectrogram settings:</h5>
+                                  </div>
+                                </div>
+                                <div class="row align-items-center d-flex justify-content-center">
+                                  <div class="col-auto">
+                                    <p style="margin-bottom: 0px;">Image quality:</p>
+                                    <div class="row">
+                                      <div class="col d-flex justify-content-center">
+                                        <div class="row">
+                                          <div class="col text-left">
+                                            <!-- "high_quality" radio button is hidden, because the increase in quality was miniscule -->
+                                            <div class="custom-control custom-radio" hidden>
+                                              <input type="radio" id="high_quality" name="customRadio"
+                                                class="custom-control-input" checked>
+                                              <label class="custom-control-label" for="high_quality">high (slow)</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                              <input type="radio" id="standard_quality" name="customRadio"
+                                                class="custom-control-input" checked>
+                                              <label class="custom-control-label"
+                                                for="standard_quality">standard</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                              <input type="radio" id="low_quality" name="customRadio"
+                                                class="custom-control-input">
+                                              <label class="custom-control-label" for="low_quality">low (fast)</label>
+                                            </div>
+                                            <br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row align-items-center d-flex justify-content-center">
+                                  <div class="col-auto">
+                                    <p style="margin-bottom: 0px;">Colour scheme:</p>
+                                    <div class="row">
+                                      <div class="col d-flex justify-content-center">
+                                        <div class="row">
+                                          <div class="col text-left">
+                                            <!-- "high_quality" radio button is hidden, because the increase in quality was miniscule -->
+                                            <div class="custom-control custom-radio">
+                                              <input type="radio" id="black_on_white" name="customRadio2"
+                                                class="custom-control-input" checked>
+                                              <label class="custom-control-label" for="black_on_white">black on
+                                                white</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                              <input type="radio" id="white_on_black" name="customRadio2"
+                                                class="custom-control-input">
+                                              <label class="custom-control-label" for="white_on_black">white on
+                                                black</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                              <input type="radio" id="flames" name="customRadio2"
+                                                class="custom-control-input">
+                                              <label class="custom-control-label" for="flames">flames</label>
+                                            </div>
+                                            <br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row align-items-center d-flex justify-content-center">
+                                  <div class="col-6 d-flex justify-content-end">
+                                    <label for="window_length_input" class="form-label is-valid">Window length
+                                      (s):</label>
+                                  </div>
+                                  <div class="col-4">
+                                    <input class="form-control" id="window_length_input" type="text" value="0.005"
+                                      size="5">
+                                  </div>
+                                </div>
+                                <br>
+                                <div class="row align-items-center d-flex justify-content-center">
+                                  <div class="col-6 d-flex justify-content-end">
+                                    <label for="dynamic_range_input" class="form-label is-valid">Dynamic range
+                                      (dB):</label>
+                                  </div>
+                                  <div class="col-4">
+                                    <input class="form-control" id="dynamic_range_input" type="text" value="50"
+                                      size="5">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-auto">
+                            <div class="card shadow">
+                              <div class="card-body">
+                                <div class="row align-items-center d-flex justify-content-center">
+                                  <div class="col-auto">
+                                    <h5 style="margin-bottom: 0.8em;">Formant settings:</h5>
+                                  </div>
+                                </div>
+                                <div class="row align-items-center d-flex justify-content-center">
+                                  <div class="col-6 d-flex justify-content-end">
+                                    <label for="maximum_formant_input" class="form-label is-valid">Maximum formant
+                                      (Hz):</label>
+                                  </div>
+                                  <div class="col-4">
+                                    <input class="form-control" id="maximum_formant_input" type="text" value="5500"
+                                      size="5">
+                                  </div>
+                                </div>
+                                <br>
+                                <div class="row align-items-center d-flex justify-content-center">
+                                  <div class="col-6 d-flex justify-content-end">
+                                    <label for="max_number_of_formants_input" class="form-label is-valid">Max. number of
+                                      formants:</label>
+                                  </div>
+                                  <div class="col-4">
+                                    <input class="form-control" id="max_number_of_formants_input" type="text" value="5"
+                                      size="5">
+                                  </div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="row align-items-center d-flex justify-content-center">
+                                  <div class="col-auto">
+                                    <h5 style="margin-bottom: 0.8em;">Pitch settings (F0):</h5>
+                                  </div>
+                                </div>
+                                <div class="row align-items-center d-flex justify-content-center">
+                                  <div class="col-6 d-flex justify-content-end">
+                                    <label for="pitch_floor_input" class="form-label is-valid">Pitch floor
+                                      (Hz):</label>
+                                  </div>
+                                  <div class="col-4">
+                                    <input class="form-control" id="pitch_floor_input" type="text" value="100" size="5">
+                                  </div>
+                                </div>
+                                <br>
+                                <div class="row align-items-center d-flex justify-content-center">
+                                  <div class="col-6 d-flex justify-content-end">
+                                    <label for="pitch_ceiling_input" class="form-label is-valid">Pitch ceiling
+                                      (Hz):</label>
+                                  </div>
+                                  <div class="col-4">
+                                    <input class="form-control" id="pitch_ceiling_input" type="text" value="500"
+                                      size="5">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Save and close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+              <div class="col text-center d-flex justify-content-center">
+                <button type="button" class="btn btn-primary" id="vowel_analysis_button" disabled
+                  style="cursor: auto">Analysis</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col">
+        <div class="row align-items-center d-flex justify-content-center">
+          <div class="col-auto">
+            <h5 style="margin-bottom: 0.8em;">Measurement results:</h5>
+          </div>
+        </div>
+        <div class="row align-items-center d-flex justify-content-center">
+          <div class="col-auto" id="spectrogram_info" hidden>
+            <div class="card shadow" style="max-width: 600px;">
+              <div class="card-body">
+                <!-- <p style="margin: 0px;">Central regions of formants are marked in the spectrogram as black dotted lines.
+                  F3 is at the top, F2
+                  in the middle and F1 at the bottom. F0 is not shown in the spectrogram.</p> -->
+                <p style="margin: 0px;">Central regions of formants are marked in the spectrogram as dotted lines.
+                  F3 is at the top (yellow line), F2
+                  in the middle (green line) and F1 is the lowest of the formants (blue line). At the very the bottom of
+                  the spectrogram, F0 (or pitch) is shown as a red line.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row align-items-center d-flex justify-content-center">
+      <div class="col-auto">
+        <label for="inputPassword6" class="form-label is-valid">Mean F3 (Hz):</label>
+      </div>
+      <div class="col-auto">
+        <input class="form-control" id="f3_input" type="text" placeholder="" size="5">
+      </div>
+    </div>
+    <br>
+    <div class="row align-items-center d-flex justify-content-center">
+      <div class="col-auto">
+        <label for="inputPassword6" class="form-label is-valid">Mean F2 (Hz):</label>
+      </div>
+      <div class="col-auto">
+        <input class="form-control" id="f2_input" type="text" placeholder="" size="5">
+      </div>
+    </div>
+    <br>
+    <div class="row align-items-center d-flex justify-content-center">
+      <div class="col-auto">
+        <label for="inputPassword6" class="form-label is-valid">Mean F1 (Hz):</label>
+      </div>
+      <div class="col-auto">
+        <input class="form-control" id="f1_input" type="text" placeholder="" size="5">
+      </div>
+    </div>
+    <br>
+    <div class="row align-items-center d-flex justify-content-center">
+      <div class="col-auto">
+        <label for="inputPassword6" class="form-label is-valid">Mean F0 (Hz):</label>
+      </div>
+      <div class="col-auto">
+        <input class="form-control" id="f0_input" type="text" placeholder="" size="5">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-xs-12" style="height:2em;"></div>
+  <hr>
+  <div class="col-xs-12" style="height:1.3em;"></div>
+
+  <div class="row">
+    <div class="col text-center d-flex justify-content-center">
+      <h1>Step 2: Placement in the IPA Vowel Diagram</h1>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <!-- <div class="row">
+    <div class="col text-center d-flex justify-content-center">
+      <button type="button" class="btn btn-success" id="vq_settings_button">Diagram settings</button>
+    </div>
+  </div>
+
+
+  <br> -->
+  <div class="row">
+    <div class="col text-center d-flex justify-content-center">
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="grid_switch" checked>
+        <label class="custom-control-label" for="grid_switch">Hide/Show coordinates grid</label>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col text-center d-flex justify-content-center">
+      <button type="button" class="btn btn-primary" id="measurement_results_submit_button" disabled>Submit measurement
+        results</button>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row text-center d-flex justify-content-center align-items-center">
+    <div class="col-auto" id="results_info" hidden>
+      <div class="card shadow" style="max-width: 600px; margin-bottom: 20px">
+        <div class="card-body" id="results_info_contents">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row justify-content-center align-items-center">
+    <div class="col text-center">
+      <canvas width="1000" height="750" style="background: white" id="theCanvas"></canvas>
+    </div>
+
+  </div>
+
+  <div class="row ">
+    <div class="col text-center">
+      <a href="#" class="button" id="image_download" download="vowel-diagram.png">
+        <!-- <button type="button" class="btn btn-primary" id="image_download_button" disabled style="cursor: auto">Save
+          image</button> -->
+        <button type="button" class="btn btn-success" id="image_download_button">Save
+          image</button>
+      </a>
+    </div>
+  </div>
+
+  <div class="col-xs-12" style="height:2em;"></div>
+  </div>
+
+  <div class="col-xs-12" style="height:2em;"></div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'jquery/jquery.slim.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/layeredCanvas.js' %}"></script>
+  <script type="module" src="{% static 'js/vowelmeter.js' %}"></script>
+
+</body>
+
+</html>

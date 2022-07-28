@@ -1,0 +1,25 @@
+.my_container {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: #28a745;
+  background-color: #28a745;
+  box-shadow: none !important;
+}
+
+li {
+  font-size:1.2em;
+  line-height: 1.1em;
+}
+
+/* input[type="text"]:focus {
+  border-color: #28a745;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #28a745;
+} */
+
+.results_paragraph {
+  margin: 0px;
+}

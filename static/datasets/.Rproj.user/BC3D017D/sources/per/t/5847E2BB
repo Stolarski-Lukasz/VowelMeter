@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1589893208790.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1565649289",
+    "id" : "5847E2BB",
+    "lastKnownWriteTime" : 1589936871,
+    "last_content_update" : 1589936871372,
+    "path" : "/media/luke/WORK/Programming/Python/vowels_bootstrap/static/datasets/datasets.R",
+    "project_path" : "datasets.R",
+    "properties" : {
+        "cursorPosition" : "28,0",
+        "scrollLine" : "15",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
