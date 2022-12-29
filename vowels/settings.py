@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app_monophthongs'
+    'app_navigation',
+    'app_acoustic_analysis',
+    'app_diagram'
 ]
 
 MIDDLEWARE = [

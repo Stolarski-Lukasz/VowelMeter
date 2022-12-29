@@ -25,7 +25,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('app_monophthongs.urls'))
+    path('', include('app_navigation.urls')),
+    path('', include('app_acoustic_analysis.urls')),
+    path('', include('app_diagram.urls'))
 ]
 
 # the below is neccessary if we use only main app and want to serve static files
