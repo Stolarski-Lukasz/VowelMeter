@@ -8,4 +8,4 @@ The functionality of VowelMeter is divided into two parts:
 
 2. In the second part, these measurements are used for automatic placement in the IPA Vowel Diagram.
 
-VowelMeter is available for free at [vowelmeter.pythonanywhere.com](https://vowelmeter.pythonanywhere.com).
+VowelMeter is available for free at [vowelmeter.pythonanywhere.com](https://vowelmeter.pythonanywhere.com). Additionally, you can find the machine learning scripts used for this project at [github.com/Stolarski-Lukasz/ML_Projects](https://github.com/Stolarski-Lukasz/ML_Projects) and the voice analysis scripts used for obtaining acoustic measurements at [github.com/Stolarski-Lukasz/audio_analysis](https://github.com/Stolarski-Lukasz/audio_analysis).
