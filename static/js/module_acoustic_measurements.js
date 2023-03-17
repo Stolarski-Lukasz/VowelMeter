@@ -157,6 +157,7 @@ export function vowel_analysis(vowel_analysis_button, vowel_status_text, vowel_f
                 let f1_mean = response_object.f1_mean;
                 let f2_mean = response_object.f2_mean;
                 let f3_mean = response_object.f3_mean;
+                let acoustic_measurements_id = response_object.acoustic_measurements_id;
                 
                 // spectrogram insertion
                 let spectrogram_name_and_path = response_object.spectrogram_name_and_path;
@@ -183,6 +184,9 @@ export function vowel_analysis(vowel_analysis_button, vowel_status_text, vowel_f
                 measurement_results_submit_button.className = "btn btn-success";
                 measurement_results_submit_button.disabled = false;
                 measurement_results_submit_button.style.cursor = 'pointer';
+                console.log(acoustic_measurements_id)
+                measurement_results_submit_button.dataset.acousticMeasurementsId = acoustic_measurements_id;
+                
             };
         };
 
@@ -240,10 +244,12 @@ export function activate_submit_measurements_button() {
             measurement_results_submit_button.className = "btn btn-success";
             measurement_results_submit_button.disabled = false;
             measurement_results_submit_button.style.cursor = 'pointer';
+            measurement_results_submit_button.dataset.acousticMeasurementsId = "None";
         } else {
             measurement_results_submit_button.className = "btn btn-primary";
             measurement_results_submit_button.disabled = true;
             measurement_results_submit_button.style.cursor = 'default';
+            measurement_results_submit_button.dataset.acousticMeasurementsId = "None";
         }
     })
     f1_input.addEventListener('change', function () {
@@ -251,10 +257,12 @@ export function activate_submit_measurements_button() {
             measurement_results_submit_button.className = "btn btn-success";
             measurement_results_submit_button.disabled = false;
             measurement_results_submit_button.style.cursor = 'pointer';
+            measurement_results_submit_button.dataset.acousticMeasurementsId = "None";
         } else {
             measurement_results_submit_button.className = "btn btn-primary";
             measurement_results_submit_button.disabled = true;
             measurement_results_submit_button.style.cursor = 'default';
+            measurement_results_submit_button.dataset.acousticMeasurementsId = "None";
         }
     })
     f2_input.addEventListener('change', function () {
@@ -262,10 +270,12 @@ export function activate_submit_measurements_button() {
             measurement_results_submit_button.className = "btn btn-success";
             measurement_results_submit_button.disabled = false;
             measurement_results_submit_button.style.cursor = 'pointer';
+            measurement_results_submit_button.dataset.acousticMeasurementsId = "None";
         } else {
             measurement_results_submit_button.className = "btn btn-primary";
             measurement_results_submit_button.disabled = true;
             measurement_results_submit_button.style.cursor = 'default';
+            measurement_results_submit_button.dataset.acousticMeasurementsId = "None";
         }
     })
     f3_input.addEventListener('change', function () {
@@ -273,10 +283,12 @@ export function activate_submit_measurements_button() {
             measurement_results_submit_button.className = "btn btn-success";
             measurement_results_submit_button.disabled = false;
             measurement_results_submit_button.style.cursor = 'pointer';
+            measurement_results_submit_button.dataset.acousticMeasurementsId = "None";
         } else {
             measurement_results_submit_button.className = "btn btn-primary";
             measurement_results_submit_button.disabled = true;
             measurement_results_submit_button.style.cursor = 'default';
+            measurement_results_submit_button.dataset.acousticMeasurementsId = "None";
         }
     })
 };

@@ -169,11 +169,13 @@ export function submit_measurement_results(measurement_results_submit_button, f0
     let f1_final = f1_input.value;
     let f2_final = f2_input.value;
     let f3_final = f3_input.value;
+    let acoustic_measurements_id = measurement_results_submit_button.dataset.acousticMeasurementsId;
     var formData = new FormData();
     formData.append('f0_final', f0_final);
     formData.append('f1_final', f1_final);
     formData.append('f2_final', f2_final);
     formData.append('f3_final', f3_final);
+    formData.append('acoustic_measurements_id', acoustic_measurements_id);
 
     // activating spinner
     create_element({ tag: "div", className: "spinner-border spinner-border-sm text-primary", role: "status", id: "diagram_spinner", parent_id: "measurement_results_submit_button", style_marginLeft: "1em" });

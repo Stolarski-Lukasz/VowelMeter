@@ -24,7 +24,7 @@ SECRET_KEY = 'fctc*-8u@eyr2s63s%z#+5y%y9+i9()lkct$4&pn3y+9=t6(dp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'vowelmeter.pythonanywhere.com']
 
 
 # Application definition
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'vowels.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['templates', '/home/vowelmeter/vowelmeter/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
