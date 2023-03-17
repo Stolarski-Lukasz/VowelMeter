@@ -1,3 +1,4 @@
 notes/
 media/
 __pycache__/
+app_acoustic_analysis/*.so
