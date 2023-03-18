@@ -2,4 +2,3 @@ notes/
 media/
 __pycache__/
 *.so
-*.sqlite3
