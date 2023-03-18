@@ -56,7 +56,7 @@ ROOT_URLCONF = 'vowels.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates', '/home/vowelmeter/vowelmeter/templates'],
+        'DIRS': ['templates', '/home/vowelmeter/VowelMeter/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
